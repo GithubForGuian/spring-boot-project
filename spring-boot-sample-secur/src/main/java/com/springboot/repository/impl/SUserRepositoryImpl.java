@@ -1,9 +1,10 @@
 package com.springboot.repository.impl;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -11,7 +12,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository("sUserRepositoryImpl")
 public class SUserRepositoryImpl {
-	@PersistenceContext
+	
+	@Autowired
+	@Qualifier("entityManagerPrimary")
 	private EntityManager entityManager;
 
 	public Page<Object[]> login(int id) {
