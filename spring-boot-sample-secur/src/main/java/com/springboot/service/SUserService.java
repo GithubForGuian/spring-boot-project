@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.domain.SUser;
 import com.springboot.repository.SUserRepository;
+import com.springboot.repository.impl.SUserRepositoryImpl;
 
 @EnableAutoConfiguration
 @Service("suserService")
@@ -24,7 +25,7 @@ public class SUserService {
 		return suserRepository.save(user);
 	}
 
-	public SUser findUserById(int id) {
+	public SUser findUserById(int id) {	
 		return suserRepository.findOne(id);
 	}
 

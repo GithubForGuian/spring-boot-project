@@ -16,11 +16,11 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//@Configuration
-//@EnableTransactionManagement
-//@EnableJpaRepositories(entityManagerFactoryRef="entityManagerFactoryPrimary",
-//						transactionManagerRef="transactionManagerPrimary",
-//						basePackages= { "com.wisely.demo.repository" })//设置dao（repo）所在位置
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(entityManagerFactoryRef="entityManagerFactoryPrimary",
+						transactionManagerRef="transactionManagerPrimary",
+						basePackages= { "com.springboot.repository.impl" })//设置dao（repo）所在位置
 public class RepositorySecondaryConfig {
 	@Autowired
     private JpaProperties jpaProperties;
@@ -38,7 +38,7 @@ public class RepositorySecondaryConfig {
         return builder
                 .dataSource(secondaryDS)
                 .properties(getVendorProperties(secondaryDS))
-                .packages("com.wisely.demo.domain.two")
+                .packages("com.springboot.domain.two")
                 .persistenceUnit("secondaryPersistenceUnit")
                 .build();
     }
